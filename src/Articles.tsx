@@ -1,19 +1,7 @@
 import styles from "./App.module.css";
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-type Post = {
-  id: string | number;
-  title: string;
-  content: string;
-  createdAt: string;
-  categories: string[];
-  thumbnailUrl?: string;
-};
-
-type ApiListResponse = {
-  posts: Post[];
-};
+import { Post, ApiListResponse } from "./types/Post"; 
 
 function Articles() {
   const [posts, setPosts] = useState<Post[]>([]);

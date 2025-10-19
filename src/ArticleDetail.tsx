@@ -1,19 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from "./ArticleDetail.module.css";
-
-type Post = {
-  id: string;
-  title: string;
-  content: string; // HTMLが文字列で入ってくる想定
-  createdAt: string; // ISO文字列
-  thumbnailUrl?: string | null;
-  categories: string[];
-};
-
-type PostResponse = {
-  post: Post;
-};
+import { Post, PostResponse } from "./types/Post"; 
 
 export default function ArticleDetails() {
   const [isLoading, setIsLoading] = useState(true); 
@@ -48,7 +36,7 @@ export default function ArticleDetails() {
         
         const data = (await res.json()) as PostResponse;
         const one = data.post
-        setPost(one ?? null);
+        setPost(one);
       } catch (e) {
         if (e instanceof Error) {
           setError(e.message);
